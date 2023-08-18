@@ -25,9 +25,17 @@
 			if(xhr.readyState===4){
 				if(xhr.status===200){
 					const paramList=JSON.parse(xhr.responseText);
-					let html='<tr>';
-					if(xhr.responseText=='1'){
-						alert('정상 입력');
+					let html='<tr><td colspan="2">내용이 없습니다</tr>';
+					if(paramList.length!==0){
+						html='';
+						for(const param of paramList){
+							html +='<tr>';
+							html +='<td>'+param.num+'</td>';
+							html +='<td>'+param.name+'</td>';
+							html +='</tr>';
+						}
+					}
+					document.querySelector('#tBody').innerHTML=html;
 						  
 					}
 				}
